@@ -35,7 +35,7 @@ public class ControllerUser {
     public List<User> getAll() {
         return userService.getAll();
     }
-    @PostMapping("/new")
+      @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public User create(@RequestBody User user) {
         return userService.create(user);
