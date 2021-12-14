@@ -27,7 +27,7 @@ public class ServiceCleaningProduct {
     }
     
     public Optional <CleaningProduct> getCleanProd(Integer id){
-        return CleanProdRepository.getCleanProd(id);
+        return CleanProdRepository.getCleanP(id);
     }
     
     public CleaningProduct create (CleaningProduct cleaningProduct){
@@ -38,41 +38,39 @@ public class ServiceCleaningProduct {
         }
     }
     
-    public CleaningProduct update(CleaningProduct cleanProduct) {
-        if (cleanProduct.getId() == null) {
-            Optional<CleaningProduct> userDb = CleanProdRepository.getCleanProd(cleanProduct.getId());
-            
-            if (!userDb.isEmpty()) {
-                if(cleanProduct.getBrand() !=null){
-                    userDb.get().setBrand(cleanProduct.getBrand());
-                }
-                if(cleanProduct.getCategory() !=null){
-                    userDb.get().setCategory(cleanProduct.getCategory());
-                }
-                if(cleanProduct.getPresentation() !=null){
-                    userDb.get().setPresentation(cleanProduct.getPresentation());
-                }
-                if(cleanProduct.getDescription() !=null){
-                    userDb.get().setDescription(cleanProduct.getDescription());
-                }
-                if(cleanProduct.getPrice() != 0.0){
-                    userDb.get().setPrice(cleanProduct.getPrice());
-                }
-                if(cleanProduct.getQuantity() != 0){
-                    userDb.get().setQuantity(cleanProduct.getQuantity());
-                }
-                if(cleanProduct.getPhotography() !=null){
-                    userDb.get().setPhotography(cleanProduct.getPhotography());
+    public CleaningProduct update(CleaningProduct accesory) {
+        if (accesory.getId() != null) {
+            Optional<CleaningProduct> accesoryDb = CleanProdRepository.getCleanP(accesory.getId());
+            if (!accesoryDb.isEmpty()) {
+                
+                if (accesory.getBrand()!= null) {
+                    accesoryDb.get().setBrand(accesory.getBrand());
                 }
                 
-                userDb.get().setAvailability(cleanProduct.isAvailability());
-                CleanProdRepository.update(userDb.get());
-                return userDb.get();
-            }else{
-                return cleanProduct;
+                if (accesory.getCategory() != null) {
+                    accesoryDb.get().setCategory(accesory.getCategory());
+                }
+                
+                if (accesory.getDescription() != null) {
+                    accesoryDb.get().setDescription(accesory.getDescription());
+                }
+                if (accesory.getPrice() != 0.0) {
+                    accesoryDb.get().setPrice(accesory.getPrice());
+                }
+                if (accesory.getQuantity() != 0) {
+                    accesoryDb.get().setQuantity(accesory.getQuantity());
+                }
+                if (accesory.getPhotography() != null) {
+                    accesoryDb.get().setPhotography(accesory.getPhotography());
+                }
+                accesoryDb.get().setAvailability(accesory.isAvailability());
+                CleanProdRepository.update(accesoryDb.get());
+                return accesoryDb.get();
+            } else {
+                return accesory;
             }
-        }else{
-            return cleanProduct;
+        } else {
+            return accesory;
         }
     }
     

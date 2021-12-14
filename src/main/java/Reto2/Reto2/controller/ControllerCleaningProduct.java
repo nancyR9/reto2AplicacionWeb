@@ -49,8 +49,8 @@ public class ControllerCleaningProduct {
     
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public CleaningProduct update(@RequestBody CleaningProduct cleanProd) {
-        return cleanProdService.update(cleanProd);
+    public CleaningProduct update(@RequestBody CleaningProduct gadget) {
+        return cleanProdService.update(gadget);
     }
     
     @DeleteMapping("/{id}")

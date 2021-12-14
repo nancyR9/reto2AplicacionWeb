@@ -18,25 +18,24 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class RepositoryCleaningProduct {
     @Autowired
-     private InterfaceCleaningProduct repository ;
-    
-    public List<CleaningProduct> getAll(){
-        return repository.findAll();       
+    private InterfaceCleaningProduct repository;
+
+    public List<CleaningProduct> getAll() {
+        return repository.findAll();
     }
-        
-    public Optional <CleaningProduct> getCleanProd(Integer id){
+
+    public Optional<CleaningProduct> getCleanP(int id) {
         return repository.findById(id);
     }
-    
-    public CleaningProduct create(CleaningProduct cleanProd){
-        return repository.save(cleanProd);
+    public CleaningProduct create(CleaningProduct cleanp) {
+        return repository.save(cleanp);
+    }
+
+    public void update(CleaningProduct cleanpr) {
+        repository.save(cleanpr);
     }
     
-     public void update(CleaningProduct cleanProd){
-        repository.save(cleanProd);
-    }
-    
-    public void delete(CleaningProduct cleanProd){
-        repository.delete(cleanProd);
+    public void delete(CleaningProduct cleanpro) {
+        repository.delete(cleanpro);
     }
 }

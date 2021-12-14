@@ -30,12 +30,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControllerUser {
     @Autowired
     private ServiceUser userService;
-    @GetMapping("/all")
-    public List <User> getAll(){
+     
+     @GetMapping("/all")
+    public List<User> getAll() {
         return userService.getAll();
     }
-    
-     @PostMapping("/new")
+    @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public User create(@RequestBody User user) {
         return userService.create(user);
@@ -49,7 +49,7 @@ public class ControllerUser {
     
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Boolean delate(@PathVariable("id") int id) {
+    public boolean delete(@PathVariable("id") int id) {
         return userService.delete(id);
     }
     @GetMapping("/{email}/{password}")
@@ -60,5 +60,4 @@ public class ControllerUser {
     public boolean emailExists(@PathVariable("email") String email) {
         return userService.emailExists(email);
     }
-    
 }
