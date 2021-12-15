@@ -51,7 +51,7 @@ public class ServiceUser {
     }
     
     public User update(User user) {
-        if (user.getId() == null) {
+        if (user.getId() != null) {
             Optional<User> userDb = userRepository.getUser(user.getId());
             
             if (!userDb.isEmpty()) {
@@ -69,6 +69,9 @@ public class ServiceUser {
                 }
                 if(user.getEmail() !=null){
                     userDb.get().setEmail(user.getEmail());
+                }
+                if(user.getPassword() !=null){
+                    userDb.get().setPassword(user.getPassword());
                 }
                 if(user.getZone() !=null){
                     userDb.get().setZone(user.getZone());
