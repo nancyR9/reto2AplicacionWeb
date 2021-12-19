@@ -11,7 +11,7 @@
 	<groupId>Reto2</groupId>
 	<artifactId>Reto2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Reto2</name>
+	<name>Reto2-3</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>

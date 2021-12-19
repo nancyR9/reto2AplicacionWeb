@@ -6,6 +6,7 @@ package Reto2.Reto2.service;
 
 
 import Reto2.Reto2.modelo.CleaningProduct;
+import Reto2.Reto2.modelo.User;
 import Reto2.Reto2.repository.RepositoryCleaningProduct;
 import java.util.List;
 import java.util.Optional;
@@ -31,11 +32,12 @@ public class ServiceCleaningProduct {
     }
     
     public CleaningProduct create (CleaningProduct cleaningProduct){
-        if(cleaningProduct.getId()==null){
+        if (cleaningProduct.getId()== null) {
             return cleaningProduct;
-        }else{
-           return CleanProdRepository.create(cleaningProduct);
+        } else {
+            return CleanProdRepository.create(cleaningProduct);
         }
+          
     }
     
     public CleaningProduct update(CleaningProduct accesory) {

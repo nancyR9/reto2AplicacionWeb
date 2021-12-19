@@ -29,20 +29,23 @@ public class ServiceUser {
     }
     
      public User create (User user){
-        if(user.getId()==null){
-            return user;
-        }else{
-            Optional<User> evt=userRepository.getUser(user.getId());
-            if(evt.isEmpty()){
-                if(emailExists(user.getEmail())==false){
-                    return userRepository.create(user);
-                }else{
-                    return user;
-                }
-                
+        Optional<User> userIdMaximo= userRepository.lastUserId();
+        if(user.getId() == null){
+            if(userIdMaximo.isEmpty()){
+                user.setId(1);
+            }else{
+                 user.setId(userIdMaximo.get().getId()+1);
+            }
+        }
+        Optional<User> existeuser= userRepository.getUser(user.getId());
+        if(existeuser.isEmpty()){
+            if(emailExists(user.getEmail())==false){
+                return userRepository.create(user);
             }else{
                 return user;
             }
+        }else{
+             return user;
         }
     }
      
@@ -60,6 +63,12 @@ public class ServiceUser {
                 }
                 if(user.getName() !=null){
                     userDb.get().setName(user.getName());
+                }
+                if(user.getBirthtDay() !=null){
+                    userDb.get().setBirthtDay(user.getBirthtDay());
+                }
+                if(user.getMonthBirthtDay() !=null){
+                    userDb.get().setMonthBirthtDay(user.getMonthBirthtDay());
                 }
                 if(user.getAddress() !=null){
                     userDb.get().setAddress(user.getAddress());
